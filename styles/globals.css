@@ -1,7 +1,7 @@
 @import "style.css";
 @import "responsive.css";
 
-html{
+html,.sub_page{
   background-image: radial-gradient(circle,black 70%,blue) ;
 }
 
