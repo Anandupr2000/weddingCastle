@@ -1,8 +1,7 @@
 @import "style.css";
 @import "responsive.css";
 
-html,
-body{
+html{
   background-image: radial-gradient(circle,black 70%,blue) ;
 }
 
@@ -11,16 +10,3 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-}

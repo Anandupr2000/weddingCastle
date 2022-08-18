@@ -1,10 +1,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import more from '../images/icons/more.png'
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div >
       <Head>
         <title>Wedding Castle</title>
         <meta name="description" />
@@ -14,67 +17,137 @@ export default function Home() {
         {/* fonts style */}
         {/* <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet"/> */}
 
-          {/* <!-- Custom styles for this template --> */}
-          {/* <link href="css/style.css" rel="stylesheet" /> */}
-          {/* <!-- responsive style --> */}
-          {/* <link href="css/responsive.css" rel="stylesheet" /> */}
+        {/* <!-- Custom styles for this template --> */}
+        {/* <link href="css/style.css" rel="stylesheet" /> */}
+        {/* <!-- responsive style --> */}
+        {/* <link href="css/responsive.css" rel="stylesheet" /> */}
 
-          <link rel="icon" href="/favicon.ico" />
+        {/* bootstrap */}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossOrigin="anonymous" />
+
+        <link rel="icon" href="/favicon.ico" />
+        {/* <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script> */}
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <main >
+        {/* body */}
+        <div className="sub_page">
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+          <div className="hero_area">
+            <div className="header_section" style={{ backgroundColor: 'black' }}>
+              <div className="container-fluid">
+                <div className="row" style={{ display: 'flex' }}>
+                  <nav className="navbar navbar-expand-lg">
+                    <a href="/" className="navbar-brand flex-1">
+                      <img src="images/about-img.jpg" style={{ borderRadius: "100px" }} alt="" />
+                      <span style={{ fontFamily: "Garamond" }}>
+                        &nbsp; Wedding Castle
+                      </span>
+                    </a>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                      aria-label="Toggle navigation" >
+                      <span className="navbar-toggler-icon">
+                        {/* hamburger */}
+                        <div style={{ width: "30px", height: "5px", backgroundColor: "white", margin: "5px 0px" }}></div>
+                        <div style={{ width: "30px", height: "5px", backgroundColor: "white", margin: "5px 0px" }}></div>
+                        <div style={{ width: "30px", height: "5px", backgroundColor: "white", margin: "5px 0px" }}></div>
+                      </span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+                      </ul>
+                      <div className="d-flex ml-auto flex-column flex-lg-row align-items-center">
+                        <ul className="navbar-nav  ">
 
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+                          <br /><br />
+                          <li style={{ color: "white" }} className="nav-item">
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+                            Ashok Thampi&nbsp;&nbsp;<br /></li>
+
+                          <li className="nav-item">
+
+                            <a className="nav-link" href="#contact">contact</a>
+                          </li>
+                        </ul>
+
+                      </div>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+            </div>
+            {/* end header section */}
+          </div>
+
+          <div className="about_section layout_padding">
+            <div className="container">
+              <div className="heading_container">
+                <div className="box">
+                  <div className="img-box">
+                    <img className='box-logo' src="images/about-img.jpg" style={{ borderRadius: "100px" }} alt="" />
+                    <div className="about_img-bg">
+                      <img src="images/about-img-bg.png" alt="" />
+                    </div>
+                  </div>
+                  <div className="detail-box">
+
+                    <div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="">
+
+          </div>
         </div>
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
+      <footer className='footer_section'>
+        {/* <!-- info section --> */}
+        <section id="contact" className="info_section ">
+
+          <br />
+          <div className="container">
+            <div className="info_container">
+              <div className="info_social">
+                <h3>PERSONAL DETAILS</h3>
+
+                <h6>Ashok Thampi</h6>
+                <h6>contact:8281049141</h6>
+                <h6>Location:Mundakayam</h6>
+                <h6>Email:dezirethampi@gmail.com</h6><br /><br />
+
+                <div className="d-flex justify-content-center">
+                  <h4 className="">
+                    Follow on
+                  </h4>
+
+
+                </div>
+
+                <div className="social_box">
+                  <a target="_blank" href="https://www.facebook.com/weddingcastlecreation/">
+                    <img src="images/fb.png" alt="" />
+                  </a>
+                  <a target="_blank" href="https://www.instagram.com/weddingcastlecreations/feed/">
+                    <img src="images/instagram.png" alt="" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
       </footer>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossOrigin="anonymous"></script>
+
     </div>
   )
 }
