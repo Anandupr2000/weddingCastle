@@ -1,0 +1,22 @@
+{
+    "demand":{
+        "taluk":{
+            "part1":{
+                "department":"ST",
+                "openingBalance(Demand as on 01-04-22)":{
+                    "no_of_cases":1,
+                    "amount":234544354
+                },
+                "previousMonth":{
+                    "no_of_cases":1,
+                    "amount":124253555
+                },
+                "now":{
+                    "no_of_cases":1,
+                    "amount":124253555
+                },
+                "grandTotal":3456455456
+            }
+        } 
+    }
+}

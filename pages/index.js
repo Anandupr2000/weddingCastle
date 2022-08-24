@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import more from '../images/icons/more.png'
+import Upload from '../components/Upload'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -23,9 +24,9 @@ export default function Home() {
         {/* <link href="css/responsive.css" rel="stylesheet" /> */}
 
         {/* bootstrap */}
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
-        rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
-        crossOrigin="anonymous" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossOrigin="anonymous" />
 
         <link rel="icon" href="/favicon.ico" />
         {/* <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
@@ -42,42 +43,42 @@ export default function Home() {
                 <div className="col-lg-11 offset-lg-1">
                   <nav className="navbar navbar-expand-lg">
                     <div className="container-fluid">
-                      <a class="navbar-brand" href="/">
+                      <a className="navbar-brand" href="/">
                         <img src="images/about-img.jpg" style={{ borderRadius: "100px" }} alt="" />
                         <span style={{ fontFamily: "Garamond" }}>
                           &nbsp; Wedding Castle
                         </span>
                       </a>
-                      <button className="navbar-toggler bg-white mt-1" type="button" data-bs-toggle="collapse" 
-                      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-                      aria-expanded="false" aria-label="Toggle navigation">
+                      <button className="navbar-toggler bg-white mt-1" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
                         <span>
-                          <div style={{height:"5px",width:"30px",backgroundColor:"black",margin:"5px 0px"}}></div>
-                          <div style={{height:"5px",width:"30px",backgroundColor:"black",margin:"5px 0px"}}></div>
-                          <div style={{height:"5px",width:"30px",backgroundColor:"black",margin:"5px 0px"}}></div>
+                          <div style={{ height: "5px", width: "30px", backgroundColor: "black", margin: "5px 0px" }}></div>
+                          <div style={{ height: "5px", width: "30px", backgroundColor: "black", margin: "5px 0px" }}></div>
+                          <div style={{ height: "5px", width: "30px", backgroundColor: "black", margin: "5px 0px" }}></div>
                         </span>
                       </button>
                       <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                          
+
                         </ul>
                         <div className="d-flex ml-auto flex-column flex-lg-row align-items-center">
                           <ul className="navbar-nav  ">
 
-                            <br/><br/>
-                              <li style={{color: "white"}} className="nav-item">
+                            <br /><br />
+                            <li style={{ color: "white" }} className="nav-item">
 
-                                Ashok Thampi&nbsp;&nbsp;<br/></li>
+                              Ashok Thampi&nbsp;&nbsp;<br /></li>
 
-                              <li className="nav-item">
+                            <li className="nav-item">
 
-                                <a className="nav-link" href="#contact">contact</a>
-                              </li>
-                            </ul>
+                              <a className="nav-link" href="#contact">contact</a>
+                            </li>
+                          </ul>
 
-                            </div>
                         </div>
                       </div>
+                    </div>
                   </nav>
                 </div>
               </div>
@@ -123,6 +124,7 @@ export default function Home() {
               </h2>
 
             </div>
+            <Upload />
             <div className="portfolio_container layout_padding2">
               <div className="box-1">
                 <div className="img-box b-1">

@@ -1,8 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import "style.css";
 @import "responsive.css";
 
-html,.sub_page{
-  background-image: radial-gradient(circle,black 70%,blue) ;
+html, .sub_page {
+  background-image: radial-gradient(circle, black 70%, blue);
 }
 
 a {
@@ -10,3 +14,110 @@ a {
   text-decoration: none;
 }
 
+/* 
+.upload *{
+  border:none
+} */
+
+.upload_section {
+  background-color: blue;
+}
+
+.upload_section_outer {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(229, 229, 229, 0.438);
+  position: absolute;
+  z-index: 10;
+}
+
+.camera {
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 25px;
+  color: rgb(206, 108, 108);
+  background-color: rgba(242, 131, 131, 0.509);
+  margin: 10px;
+  cursor: pointer;
+}
+
+.image {
+  min-width: 600px;
+  max-height: 25rem;
+  object-fit: contain;
+}
+
+.imageControls {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+
+.clearBtn {
+  position: absolute;
+  top: 65%;
+  left: 80%;
+  width: 2rem;
+  cursor: pointer;
+  color: brown;
+  background-color: rgba(255, 255, 255, 0.914);
+  border-radius: 50%;
+  box-shadow: 3px 3px 10px 3px gray;
+  border: 1px solid gray;
+  transform: rotate(45deg);
+}
+
+.clearBtn:hover {
+  background-color: rgba(255, 255, 255, 0.914);
+}
+
+.imageSelector {
+  display: flex;
+  flex-direction: column;
+}
+
+.scrollContainer {
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  height: 500px;
+}
+
+.scrollItem img {
+  margin-left: 105px;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  z-index: 50;
+}
+
+.scrollItemImage{
+  width: 60px;
+  height: 60px;
+  margin-left: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.selected{
+  border: 2px solid black;
+}
+.scrollArrow{
+  /* my-8 w-5 bg-white absolute z-10 rounded-full cursor-pointer */
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
+  position: absolute;
+  background-color: white;
+  /* color: transparent; */
+  z-index: 10;
+  margin-top:1rem
+}
+.scrollArrowRight{
+  margin-left:-1rem
+}
+/* .backgroundColor:"LightBlue",borderRadius:"10px" */
+.addBtn{
+  background-color: rgba(95, 146, 160, 0.264);
+  border-radius: 10px;
+}
