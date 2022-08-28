@@ -3,10 +3,41 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import more from '../images/icons/more.png'
 import Upload from '../components/Upload'
+import { db, storage } from "../db/firebase"
+import { useEffect, useState } from 'react'
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export default function Home() {
+
+  let outerBox = '';
+  let innerBox = '';
+  const [images, setImages] = useState([])
+  useEffect(() => {
+    console.log("Images => ", images)
+  }, [images])
+  useEffect(() => {
+    onSnapshot(
+      query(
+        collection(db, "images"),
+        // orderBy("time", "desc")
+      ),
+      querySnapshot => {
+        // querySnapshot.forEach((doc)=>{
+        //   console.log("docs => ", doc.data().image)
+        //   // setImages([...images,doc.data().image])
+        //   images.push(doc.data().image)
+        // })
+        setImages(querySnapshot.docs.map(
+          doc => (
+            doc.data().image
+          )))
+        // querySnapshot.docs.map((doc)=>{
+        //   setImages([...images,doc.data()])
+        // })
+      })
+  }, [])
   return (
     <div >
       <Head>
@@ -126,6 +157,39 @@ export default function Home() {
             </div>
             <Upload />
             <div className="portfolio_container layout_padding2">
+              {/* {
+                images.map((image, index) => {
+                  console.log("image => ", image)
+                  // outerBox = index<=2? 'box-1' : "box-2"
+                  innerBox = "img-box b-" + index
+                  if (index <= 2) {
+                    return <div className="box-1">
+                      <div className={innerBox}>
+                        <img src={image} alt="" />
+                        <div className="btn-box">
+                          <a href="" className="btn-1">
+
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  }
+                  else {
+                    return <div className="box-2">
+                      <div className="box-2-top2">
+                        <div className={innerBox}>
+                          <img src={image} alt="" />
+                          <div className="btn-box">
+                            <a href="" className="btn-1">
+
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  }
+                })
+              } */}
               <div className="box-1">
                 <div className="img-box b-1">
                   <img src="images/p-1.jpg" alt="" />

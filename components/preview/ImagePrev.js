@@ -7,21 +7,22 @@ import {
 import { ImageList } from '@mui/material';
 import Preview from './Preview';
 
-function ImagePrev({ imageArr, currentImage, setSelectedImage ,setMPrevIndex }) {
+function ImagePrev({ images, files, currentImage, setSelectedImage, imagesSetter, setMPrevIndex }) {
     const [selected, setSelected] = React.useState([]);
 
     const isItemSelected = (id) => !!selected.find((el) => el === id);
     if (currentImage)
-    console.log(imageArr)
+        console.log(files)
     return (
         <div style={{ padding: "10px" }}>
             {
-                <ScrollMenu scrollContainerClassName='flex space-x-1 overflow-x-hidden' LeftArrow={LeftArrow} RightArrow={RightArrow} >
+                <ScrollMenu scrollContainerClassName='scollMenu' LeftArrow={LeftArrow} RightArrow={RightArrow} >
                     {
-                        imageArr.map(
+                        files.map(
                             (file, index) => (
-                                <Preview key={file.name} index={index} setMPrevIndex={setMPrevIndex}
-                                    currentImage={currentImage} setMainPreview={setSelectedImage} image={file} />
+                                <Preview key={file.name} files={files} index={index} imgArr={images} imagesSetter={imagesSetter}
+                                    setMPrevIndex={setMPrevIndex} currentImage={currentImage} 
+                                    setMainPreview={setSelectedImage} image={file} />
                             )
                         )
                     }

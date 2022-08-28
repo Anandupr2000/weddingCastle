@@ -121,3 +121,15 @@ a {
   background-color: rgba(95, 146, 160, 0.264);
   border-radius: 10px;
 }
+/* flex space-x-1 overflow-x-hidden */
+.scollMenu{
+  display: flex;
+  overflow-x: hidden;
+}
+/* .progress{
+  margin-top: 1rem;
+  display:inline-flex;
+}
+.progress span{
+  margin-left:10px 
+} */
