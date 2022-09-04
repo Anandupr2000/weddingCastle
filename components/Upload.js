@@ -27,11 +27,13 @@ const style = {
 };
 const imageTypeRegex = /image\/(png|jpg|jpeg)/gm;
 
-function Upload() {
+function Upload({ albumName }) {
+    console.log("albumname : ",albumName)
     const filePickerRef = React.useRef(null)
     let [open, setOpen] = React.useState(false)
     const [mainPreviewIndex, setMainPreviewIndex] = React.useState(0);
     const [selectedFile, setSelectedFile] = React.useState(null)
+    const [aName, setaName] = React.useState(albumName)
 
     const [imageFiles, setImageFiles] = React.useState([]);
     const [images, setImages] = React.useState([])
@@ -40,6 +42,13 @@ function Upload() {
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    React.useEffect(()=>{
+        console.log("album name : ",aName)
+    },[aName])
+    React.useEffect(()=>{
+        setaName(albumName)
+    },[albumName])
+    // setaName(albumName)
     const addImage = (e) => {
         // return new Promise((resolve, reject) => {
         console.log("No of files selected => ", e.target.files.length)
@@ -62,6 +71,12 @@ function Upload() {
     }
     const uploadFiles = (e) => {
         e.preventDefault()
+        console.log("albumName received ",albumName)
+        if(albumName) setaName(albumName)
+        if (!aName) {
+            alert("Please enter album name !!")
+            return
+        }
         const bytesTransferred = 0;
         const totalFilesSize = 0;
         // const storageRef = 
@@ -72,7 +87,7 @@ function Upload() {
         }
         console.log("total size = ", totalFilesSize)
         imageFiles.map((file, index) => {
-            const uploadTask = uploadBytesResumable(ref(storage, `images/${file.name}`), file);
+            const uploadTask = uploadBytesResumable(ref(storage, `${aName}/${file.name}`), file);
             // imageFiles[i].size
             uploadTask.on('state_changed', (snapshot) => {
                 bytesTransferred += snapshot.bytesTransferred
@@ -83,9 +98,15 @@ function Upload() {
             }, async () => {
                 console.log(index)
                 console.log("file uploaded successfully")
-                await setDoc(doc(db,`images/${file.name}`),{
-                    time:serverTimestamp(),
-                    image:await getDownloadURL(uploadTask.snapshot.ref)
+                if (index === 0 && !albumName)
+                    await setDoc(doc(db, `albums/${file.name}`), {
+                        albumName: aName ,
+                        time: serverTimestamp(),
+                        image: await getDownloadURL(uploadTask.snapshot.ref)
+                    })
+                await setDoc(doc(db, `${aName}/${file.name}`), {
+                    time: serverTimestamp(),
+                    image: await getDownloadURL(uploadTask.snapshot.ref)
                 })
                 // getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                 //     console.log('File available at', downloadURL);
@@ -140,6 +161,17 @@ function Upload() {
                         // selectedFile &&
                         imageFiles.length > 0 &&
                         <div className="imageSelector">
+                            <center>
+                                <input className="form-control"
+                                    style={{
+                                        width: "20rem",
+                                        marginBottom: "10px"
+                                    }}
+                                    onChange={(e) => { 
+                                        if(!albumName) setaName(e.target.value)
+                                     }}
+                                    type="text" value={albumName} placeholder="album name" />
+                            </center>
                             {
                                 selectedFile && <img src={selectedFile} className="image" />
                             }

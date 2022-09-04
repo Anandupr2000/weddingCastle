@@ -19,7 +19,6 @@ function Preview({ image, imgArr, index, currentImage, files, imagesSetter, setM
         fileReader.onload = (e) => {
             const { result } = e.target;
             if (result) {
-                // console.log("images array => : ", imageArr)
                 setPreview(result)
                 let name = image.name
                 if (imgArr.length < files.length) imgArr.push({ name: image.name, image: result })
