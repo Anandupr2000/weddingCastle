@@ -9,7 +9,7 @@ function Header() {
     onAuthStateChanged(auth, (usr) => {
       if (usr) {
         setUser(usr)
-        console.log("valid user found => ", user.displayName)
+        console.log("valid user found => ", user?.displayName)
       }
       else {
         setUser(null)
@@ -102,7 +102,9 @@ function Header() {
 
                         <li className="nav-item">
 
-                          <Link className="nav-link" href="#contact">contact</Link>
+                          <Link href="#contact">
+                            <a className="nav-link">contact</a>
+                          </Link>
                         </li>
                       </ul>
 
