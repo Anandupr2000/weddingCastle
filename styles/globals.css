@@ -5,7 +5,14 @@
 @import "style.css";
 @import "responsive.css";
 
-html, .sub_page {
+html,
+ /* { */
+  /* height: max-content; */
+  /* width: 100%; */
+  /* position: absolute; */
+/* } */
+
+.sub_page {
   background-image: radial-gradient(circle, black 70%, blue);
 }
 
@@ -92,17 +99,19 @@ a {
   z-index: 50;
 }
 
-.scrollItemImage{
+.scrollItemImage {
   width: 60px;
   height: 60px;
   margin-left: 5px;
   border-radius: 10px;
   cursor: pointer;
 }
-.selected{
+
+.selected {
   border: 2px solid black;
 }
-.scrollArrow{
+
+.scrollArrow {
   /* my-8 w-5 bg-white absolute z-10 rounded-full cursor-pointer */
   width: 1.3rem;
   height: 1.3rem;
@@ -111,23 +120,26 @@ a {
   background-color: white;
   /* color: transparent; */
   z-index: 10;
-  margin-top:1rem
+  margin-top: 1rem
 }
-.scrollArrowRight{
-  margin-left:-1rem
+
+.scrollArrowRight {
+  margin-left: -1rem
 }
+
 /* .backgroundColor:"LightBlue",borderRadius:"10px" */
-.addBtn{
+.addBtn {
   background-color: rgba(95, 146, 160, 0.264);
   border-radius: 10px;
 }
+
 /* flex space-x-1 overflow-x-hidden */
-.scollMenu{
+.scollMenu {
   display: flex;
   overflow-x: hidden;
 }
 
-.boxImage:hover{
+.boxImage:hover {
   box-shadow: 3px 3px 10px 3px gray;
   border: 1px solid gray;
 }
