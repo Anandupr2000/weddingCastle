@@ -78,7 +78,7 @@ function Album() {
 
                     </div>
                     {
-                        auth?.currentUser?.displayName === "Anandu P R" || (auth?.currentUser?.displayName === "Shebin p Biju")
+                        auth?.currentUser?.displayName === "Anandu P R" || (auth?.currentUser?.displayName === "Shebin p Biju.")
                         &&
                         <Upload albumName={data} />
                     }
