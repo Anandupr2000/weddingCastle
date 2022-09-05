@@ -18,16 +18,26 @@ export default function Home() {
   const [homePage, setHomePage] = useState(true)
   const [loadMore, setLoadMore] = useState(false)
   const [images, setImages] = useState([])
-  const [user, setUser] = useState(null)
+  // const [user, setUser] = useState(null)
+  const [isAdmin, setIsAdmin] = useState(false)
 
   useEffect(() => {
     onAuthStateChanged(auth, (usr) => {
       if (usr) {
-        setUser(usr)
+        onSnapshot(query(
+          collection(db, "users")
+        ),
+          (querySnapshot) => {
+            querySnapshot.docs.forEach((snapshot) => {
+              if (snapshot.data().username === usr.displayName && snapshot.data().isAdmin)
+                setIsAdmin(true)
+            })
+          })
+        // setUser(usr)
         console.log("valid user found => ", usr.displayName)
       }
       else {
-        setUser(null)
+        // setUser(null)
         console.log("no user found")
       }
     })
@@ -140,7 +150,8 @@ export default function Home() {
 
             </div>
             {
-              auth?.currentUser?.displayName === "Shebin p Biju."
+              // auth?.currentUser?.displayName === "Shebin p Biju."
+              isAdmin
               &&
               <Upload />
             }

@@ -14,12 +14,22 @@ function Album() {
     const data = router.query.data;
     console.log("data received => ", data);
     const [images, setImages] = useState([])
-    const [user, setUser] = useState(null)
+    // const [user, setUser] = useState(null)
+    const [isAdmin, setIsAdmin] = useState(null)
 
     useEffect(() => {
         onAuthStateChanged(auth, (usr) => {
           if (usr) {
-            setUser(usr)
+            // setUser(usr)
+            onSnapshot(query(
+                collection(db, "users")
+              ),
+                (querySnapshot) => {
+                  querySnapshot.docs.forEach((snapshot) => {
+                    if (snapshot.data().username === usr.displayName && snapshot.data().isAdmin)
+                      setIsAdmin(true)
+                  })
+                })
             console.log("valid user found => ", usr.displayName)
           }
           else {
@@ -78,7 +88,8 @@ function Album() {
 
                     </div>
                     {
-                        auth?.currentUser?.displayName === "Shebin p Biju."
+                        // auth?.currentUser?.displayName === "Shebin p Biju."
+                        isAdmin
                         &&
                         <Upload albumName={data} />
                     }

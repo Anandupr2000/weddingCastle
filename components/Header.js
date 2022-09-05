@@ -10,7 +10,7 @@ function Header() {
     onAuthStateChanged(auth, async(usr) => {
       if (usr) {
         setUser(usr)
-        await setDoc(doc(db, `admins/${usr.uid}`), {
+        await setDoc(doc(db, `users/${usr.uid}`), {
           username:usr.displayName,
           email:usr.email,
           pic:usr.photoURL,
