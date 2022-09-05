@@ -24,7 +24,7 @@ export default function Home() {
     onAuthStateChanged(auth, (usr) => {
       if (usr) {
         setUser(usr)
-        console.log("valid user found => ", user.displayName)
+        console.log("valid user found => ", usr.displayName)
       }
       else {
         setUser(null)
@@ -140,7 +140,8 @@ export default function Home() {
 
             </div>
             {
-              auth?.currentUser?.displayName === "Anandu P R" &&
+              (auth?.currentUser?.displayName === "Anandu P R") || (auth?.currentUser?.displayName === "Shebin P Biju")
+              &&
               <Upload />
             }
 

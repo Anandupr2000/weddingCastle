@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth'
-import { auth, provider } from "../db/firebase"
+import { auth, db, provider } from "../db/firebase"
+import { doc, setDoc } from 'firebase/firestore'
 function Header() {
   console.log("auth => ", auth?.currentUser?.displayName)
   const [user, setUser] = useState(null)
   useEffect(() => {
-    onAuthStateChanged(auth, (usr) => {
+    onAuthStateChanged(auth, async(usr) => {
       if (usr) {
         setUser(usr)
-        console.log("valid user found => ", user?.displayName)
+        await setDoc(doc(db, `users/${usr.uid}`), {
+          username:usr.displayName,
+          email:usr.email,
+          pic:usr.photoURL,
+          uid:usr.uid
+        })
+        // console.log("valid user found => ", usr?.displayName)
       }
       else {
         setUser(null)
@@ -17,6 +24,9 @@ function Header() {
       }
     })
   }, [])
+  // useEffect(() => {
+  //   if(user) 
+  // }, [user])
   const googleSignIn = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
