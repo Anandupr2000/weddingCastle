@@ -39,7 +39,7 @@ function Header() {
         // The email of the user's account used.
         // const email = error.customData.email;
         // The AuthCredential type that was used.
-        
+
         console.log("Error => ", error)
         const credential = GoogleAuthProvider.credentialFromError(error);
         console.log("Error login => ", credential)
@@ -84,7 +84,7 @@ function Header() {
 
                           {
                             user ?
-                              <div className="btn" onClick={() => {
+                              <div className="btn" style={{color:"white"}} onClick={() => {
                                 console.log("auth  is ", auth.currentUser)
                                 signOut(auth).then(() => {
                                   // Sign-out successful.
@@ -94,7 +94,8 @@ function Header() {
                                   console.log("An error happened while loggingout")
                                 });
                               }}>
-                                Ashok Thampi&nbsp;&nbsp;<br />
+                                  {user?.displayName}&nbsp;&nbsp;<br />
+                                  {/* Ashok Thampi&nbsp;&nbsp;<br /> */}
                               </div>
                               :
                               <p className="btn btn-primary" onClick={googleSignIn}>Login</p>
