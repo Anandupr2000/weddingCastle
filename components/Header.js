@@ -14,8 +14,10 @@ function Header() {
           username:usr.displayName,
           email:usr.email,
           pic:usr.photoURL,
-          uid:usr.uid
+          uid:usr.uid,
+          signInTime:usr.metadata.lastSignInTime
         })
+        console.log("signin time => ", usr.metadata.lastSignInTime)
         // console.log("valid user found => ", usr?.displayName)
       }
       else {
