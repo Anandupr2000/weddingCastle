@@ -140,7 +140,7 @@ export default function Home() {
 
             </div>
             {
-              (auth?.currentUser?.displayName === "Anandu P R") || (auth?.currentUser?.displayName === "Shebin p Biju")
+              auth?.currentUser?.displayName === "Shebin p Biju."
               &&
               <Upload />
             }
