@@ -80,11 +80,17 @@ function Header() {
                       <ul className="navbar-nav  ">
 
                         <br /><br />
+                        <li className="nav-item">
+
+                          <Link href="#contact">
+                            <a className="nav-link">contact</a>
+                          </Link>
+                        </li>
                         <li style={{ color: "white" }} className="nav-item">
 
                           {
                             user ?
-                              <div className="btn" style={{color:"white"}} onClick={() => {
+                              <div className="btn" style={{ color: "white" }} onClick={() => {
                                 console.log("auth  is ", auth.currentUser)
                                 signOut(auth).then(() => {
                                   // Sign-out successful.
@@ -94,20 +100,15 @@ function Header() {
                                   console.log("An error happened while loggingout")
                                 });
                               }}>
-                                  {user?.displayName}&nbsp;&nbsp;<br />
-                                  {/* Ashok Thampi&nbsp;&nbsp;<br /> */}
+                                {/* {user?.displayName}&nbsp;&nbsp;<br /> */}
+                                <img src={user.photoURL} style={{ borderRadius: "50%", width: "40px" }} alt="" />
+                                {/* Ashok Thampi&nbsp;&nbsp;<br /> */}
                               </div>
                               :
                               <p className="btn btn-primary" onClick={googleSignIn}>Login</p>
                           }
                         </li>
 
-                        <li className="nav-item">
-
-                          <Link href="#contact">
-                            <a className="nav-link">contact</a>
-                          </Link>
-                        </li>
                       </ul>
 
                     </div>
