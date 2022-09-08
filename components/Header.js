@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth'
 import { auth, db, provider } from "../db/firebase"
-import { addDoc, doc, setDoc, updateDoc } from 'firebase/firestore'
+import { addDoc, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore'
 function Header() {
   console.log("auth => ", auth?.currentUser?.displayName)
   const [user, setUser] = useState(null)
@@ -11,10 +11,11 @@ function Header() {
       if (usr) {
         setUser(usr)
         const docRef = doc(db, `users/${usr.uid}`)
+        const docSnap = await getDoc(docRef)
         // console.log(docRef)
-        if (docRef) {
+        if (docSnap.exists()) {
           console.log("updating user login")
-          updateDoc(docRef, {
+          await updateDoc(docRef, {
             signInTime: usr.metadata.lastSignInTime
           })
         }
@@ -36,10 +37,10 @@ function Header() {
         console.log("no user found")
       }
     })
-  }, [])
+  }, [user])
   useEffect(() => {
     // if(user)
-    console.log("user => ",user) 
+    console.log("user => ", user)
   }, [user])
   const googleSignIn = () => {
     signInWithPopup(auth, provider)

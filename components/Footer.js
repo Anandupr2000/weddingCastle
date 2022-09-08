@@ -29,8 +29,9 @@ function Footer() {
                   <a href="https://www.instagram.com/weddingcastlecreations/feed/"target="_blank" rel="noreferrer" >
                     <img src="images/instagram.png" alt="" />
                   </a>
-
-
+                  <a href="https://www.instagram.com/weddingcastlecreations/feed/"target="_blank" rel="noreferrer" >
+                    <img src="images/gmailLogo1.png" alt="" />
+                  </a>
 
                 </div>
               </div>
