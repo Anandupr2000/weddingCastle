@@ -23,10 +23,10 @@ function Footer() {
                 </div>
 
                 <div className="social_box">
-                  <a href="https://www.facebook.com/weddingcastlecreation/">
+                  <a href="https://www.facebook.com/weddingcastlecreation/" target="_blank" rel="noreferrer" >
                     <img src="images/fb.png" alt="" />
                   </a>
-                  <a href="https://www.instagram.com/weddingcastlecreations/feed/">
+                  <a href="https://www.instagram.com/weddingcastlecreations/feed/"target="_blank" rel="noreferrer" >
                     <img src="images/instagram.png" alt="" />
                   </a>
 

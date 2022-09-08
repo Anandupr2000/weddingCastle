@@ -33,7 +33,7 @@ function Upload({ albumName }) {
     let [open, setOpen] = React.useState(false)
     const [mainPreviewIndex, setMainPreviewIndex] = React.useState(0);
     const [selectedFile, setSelectedFile] = React.useState(null)
-    const [aName, setaName] = React.useState(albumName)
+    const [aName, setaName] = React.useState(null)
 
     const [imageFiles, setImageFiles] = React.useState([]);
     const [images, setImages] = React.useState([])
@@ -99,7 +99,7 @@ function Upload({ albumName }) {
                 console.log(index)
                 console.log("file uploaded successfully")
                 if (index === 0 && !albumName)
-                    await setDoc(doc(db, `albums/${file.name}`), {
+                    await setDoc(doc(db, `albums/${aName}`), {
                         albumName: aName ,
                         time: serverTimestamp(),
                         image: await getDownloadURL(uploadTask.snapshot.ref)
@@ -165,7 +165,7 @@ function Upload({ albumName }) {
                                 <input className="form-control"
                                     style={{
                                         width: "20rem",
-                                        marginBottom: "10px"
+                                        marginBottom: "5px"
                                     }}
                                     onChange={(e) => { 
                                         if(!albumName) setaName(e.target.value)
@@ -175,10 +175,10 @@ function Upload({ albumName }) {
                             {
                                 selectedFile && <img src={selectedFile} className="image" />
                             }
-                            <Button className="clearBtn" onClick={removeSelected}>
+                            <button className="clearBtn" onClick={removeSelected}>
                                 <PlusIcon />
-                            </Button>
-                            <div style={{ height: "70px", marginTop: "30px" }}>
+                            </button>
+                            <div style={{ height: "70px", marginTop: "10px" }}>
                                 {/* <ImagePrev imageArr={["https://cdn.flashtalking.com/xre/416/4167854/3873396/image/3873396.gif?792812415","https://cdn.flashtalking.com/xre/416/4167854/3873396/image/3873396.gif?792812415"]}  */}
                                 {
                                     imageFiles ?
@@ -187,7 +187,7 @@ function Upload({ albumName }) {
                                         : console.log("Empty image array")
                                 }
                             </div>
-                            <div style={{ paddingTop: "30px" }}>
+                            <div style={{ paddingTop: "10px" }}>
                                 {/* {
                                     !progress &&
                                     <Button onClick={handleClose}>Close</Button>

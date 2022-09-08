@@ -61,11 +61,12 @@ a {
   place-items: center;
 }
 
-.clearBtn {
+.clearBtn{
   position: absolute;
   top: 65%;
   left: 80%;
-  width: 2rem;
+  width: 3.5rem;
+  height: 3.5rem;
   cursor: pointer;
   color: brown;
   background-color: rgba(255, 255, 255, 0.914);

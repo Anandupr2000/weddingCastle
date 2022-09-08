@@ -2,21 +2,32 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth'
 import { auth, db, provider } from "../db/firebase"
-import { doc, setDoc } from 'firebase/firestore'
+import { addDoc, doc, setDoc, updateDoc } from 'firebase/firestore'
 function Header() {
   console.log("auth => ", auth?.currentUser?.displayName)
   const [user, setUser] = useState(null)
   useEffect(() => {
-    onAuthStateChanged(auth, async(usr) => {
+    onAuthStateChanged(auth, async (usr) => {
       if (usr) {
         setUser(usr)
-        await setDoc(doc(db, `users/${usr.uid}`), {
-          username:usr.displayName,
-          email:usr.email,
-          pic:usr.photoURL,
-          uid:usr.uid,
-          signInTime:usr.metadata.lastSignInTime
-        })
+        const docRef = doc(db, `users/${usr.uid}`)
+        // console.log(docRef)
+        if (docRef) {
+          console.log("updating user login")
+          updateDoc(docRef, {
+            signInTime: usr.metadata.lastSignInTime
+          })
+        }
+        else {
+          await setDoc(docRef, {
+            username: usr.displayName,
+            email: usr.email,
+            pic: usr.photoURL,
+            uid: usr.uid,
+            signInTime: usr.metadata.lastSignInTime
+          })
+        }
+        // await addDoc()
         console.log("signin time => ", usr.metadata.lastSignInTime)
         // console.log("valid user found => ", usr?.displayName)
       }
@@ -26,9 +37,10 @@ function Header() {
       }
     })
   }, [])
-  // useEffect(() => {
-  //   if(user) 
-  // }, [user])
+  useEffect(() => {
+    // if(user)
+    console.log("user => ",user) 
+  }, [user])
   const googleSignIn = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -107,13 +119,14 @@ function Header() {
                                 signOut(auth).then(() => {
                                   // Sign-out successful.
                                   console.log("Sucessfully loggedout")
+                                  setUser(null)
                                 }).catch((error) => {
                                   // An error happened.
                                   console.log("An error happened while loggingout")
                                 });
                               }}>
                                 {/* {user?.displayName}&nbsp;&nbsp;<br /> */}
-                                <img src={user.photoURL} style={{ borderRadius: "50%", width: "40px" }} alt="" />
+                                <img src={user.photoURL} style={{ borderRadius: "50%", width: "40px" }} alt="loading" />
                                 {/* Ashok Thampi&nbsp;&nbsp;<br /> */}
                               </div>
                               :

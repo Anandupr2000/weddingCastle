@@ -103,7 +103,7 @@ export default function Home() {
           rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
           crossOrigin="anonymous" />
 
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="images/about-img.jpg"/>
         {/* <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.js"></script> */}
       </Head>
@@ -157,7 +157,7 @@ export default function Home() {
             }
 
             {/* <div className="portfolio_container"> */}
-            <ImgView context="home" images={images} />
+            <ImgView context="home" images={images} admin={isAdmin}/>
             {/* </div> */}
           </div>
 

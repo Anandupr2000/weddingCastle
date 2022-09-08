@@ -15,7 +15,7 @@ function Album() {
     console.log("data received => ", data);
     const [images, setImages] = useState([])
     // const [user, setUser] = useState(null)
-    const [isAdmin, setIsAdmin] = useState(null)
+    const [isAdmin, setIsAdmin] = useState(false)
 
     useEffect(() => {
         onAuthStateChanged(auth, (usr) => {
@@ -33,14 +33,15 @@ function Album() {
             console.log("valid user found => ", usr.displayName)
           }
           else {
-            setUser(null)
+            // setUser(null)
             console.log("no user found")
+            setIsAdmin(false)
           }
         })
       }, [])
-    // useEffect(()=>{
-    //     console.log("images => ",images)
-    // },[images])
+    useEffect(()=>{
+        console.log("images => ",images)
+    },[images])
     useEffect(() => {
         if (!images.length)
             onSnapshot(
@@ -58,7 +59,11 @@ function Album() {
                     console.log("snapshot => ", querySnapshot.docs)
                     setImages(querySnapshot.docs.map(
                         doc => (
-                            doc.data()
+                            {
+                                image:doc.data().image,
+                                time:doc.data().time,
+                                imageName:doc.id
+                            }
                         )))
                     // querySnapshot.docs.map((doc)=>{
                     //   setImages([...images,doc.data()])
@@ -94,7 +99,7 @@ function Album() {
                         <Upload albumName={data} />
                     }
                     {/* <div className="portfolio_container"> */}
-                    <ImgView images={images} />
+                    <ImgView images={images} albumName={data} admin={isAdmin} context="album"/>
                     {/* </div> */}
                 </div>
 
