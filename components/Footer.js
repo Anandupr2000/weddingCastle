@@ -1,3 +1,4 @@
+import { MailIcon, MailOpenIcon } from '@heroicons/react/outline'
 import React from 'react'
 
 function Footer() {
@@ -24,13 +25,13 @@ function Footer() {
 
                 <div className="social_box">
                   <a href="https://www.facebook.com/weddingcastlecreation/" target="_blank" rel="noreferrer" >
-                    <img src="images/fb.png" alt="" />
+                    <img src="images/fb.png" alt="" style={{height:"40px",padding:"-10px"}}/>
                   </a>
                   <a href="https://www.instagram.com/weddingcastlecreations/feed/"target="_blank" rel="noreferrer" >
-                    <img src="images/instagram.png" alt="" />
+                    <img src="images/instagram1.png" alt="" style={{height:"60px"}}/>
                   </a>
-                  <a href="https://www.instagram.com/weddingcastlecreations/feed/"target="_blank" rel="noreferrer" >
-                    <img src="images/gmailLogo1.png" alt="" />
+                  <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=weddingcastlecreations@gmail.com&tf=1"target="_blank" rel="noreferrer" >
+                    <img src="images/gmailLogo1.png" alt="" style={{height:"40px"}}/>
                   </a>
 
                 </div>
